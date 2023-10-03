@@ -30,7 +30,9 @@ app.post('/', async (req,res) => {
         status = true
     }
 
-    res.send(await todo.updateOne({'_id' : id}, {$set:{'isDone' : status}}))
+    await todo.updateOne({'_id' : id}, {$set:{'isDone' : status}})
+
+    res.redirect("/")
 })
 
 app.listen(5000)
